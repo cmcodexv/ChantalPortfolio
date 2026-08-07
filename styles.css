@@ -1,0 +1,326 @@
+:root {
+  /* ============================================
+     COLORES 
+     ============================================ */
+  --white: #ffffff;
+  --black: #000000;
+  --pink: #ffe3f4;
+  --semiBlack: #262626;
+  /* ============================================
+     TAMAÑOS DE TEXTO 
+     ============================================ */
+  --text-hero-title: 3rem;
+  --text-hero-subtitle: 1.5rem;
+  --text-section-title: 2rem;
+  --text-section-subtitle: 1.5rem;
+  --text-body: 1rem;
+  --text-small: 0.8rem;
+  --text-tag: 1.5rem;
+  --text-button: 1rem;
+  --text-button-large: 1.5rem;
+
+  /* ============================================
+     ESPACIADOS
+     ============================================ */
+  --spacing-section: 80px 20px;
+  --spacing-section-desktop: 80px 60px;
+  --spacing-hero: 80px 20px 40px;
+  --gap-large: 30px;
+  --gap-medium: 20px;
+  --gap-small: 10px;
+  --padding-header: 16px 80px;
+  --spacing-section-extra-page: 140px 20px;
+}
+
+/* ============================================
+   RESET Y ESTRUCTURA BASE
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+html,
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+     HEADER
+     ============================================ */
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(--pink);
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+  text-decoration: none;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+/* ========================================
+   HAMBURGUESA → X (siempre visible)
+   ======================================== */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* padding: 0.5rem; */
+  z-index: 9999;
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transform: scaleX(-1);
+}
+
+.hamburger-line {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: var(--semiBlack);
+  border-radius: 10px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+/* Transformación  */
+.menu-toggle.active .line1 {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active .line2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-toggle.active .line3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ========================================
+   MENÚ LATERAL (por debajo de la hamburguesa)
+   ======================================== */
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--pink);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.nav-links.open {
+  transform: translateX(0);
+}
+
+/* ========================================
+   ENLACES (cascada)
+   ======================================== */
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  /* max-width: 300px; */
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: var(--semiBlack);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 0.5rem 0;
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.nav-links.open .nav-items a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-links.open .nav-items a:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.nav-links.open .nav-items a:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.nav-links.open .nav-items a:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.nav-links.open .nav-items a:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+/* .nav-items a:hover {
+  color: #a67c52;
+  border-bottom-color: #a67c52;
+} */
+
+.hero-placeholder {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-placeholder span {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #aaa;
+}
+
+/* ============================================
+   TABLET (768px en adelante)
+   ============================================ */
+@media (min-width: 768px) {
+  :root {
+    --text-hero-title: 4rem;
+    --text-section-title: 3rem;
+    --text-section-subtitle: 2rem;
+    --text-tag: 2rem;
+    --text-body: 1.5rem;
+    --text-button-large: 2.5rem;
+    --text-small: 1.3rem;
+    --spacing-section: 100px 40px;
+    --spacing-hero: 120px 60px 60px;
+    --padding-header: 20px 40px;
+    --gap-large: 40px;
+    --spacing-section-extra-page: 160px 40px;
+  }
+}
+
+/* ============================================
+   ESCRITORIO (1024px en adelante)
+   ============================================ */
+@media (min-width: 1024px) {
+  :root {
+    --text-hero-title: 3rem;
+    --text-hero-subtitle: 1.5rem;
+    --text-section-title: 2.2rem;
+    --text-section-subtitle: 1.3rem;
+    --text-body: 1rem;
+    --text-small: 0.8rem;
+    --text-tag: 1.5rem;
+    --text-button: 1rem;
+    --text-button-large: 1.2rem;
+    --spacing-section: 80px 60px;
+    --spacing-hero: 150px 60px 80px;
+    --padding-header: 15px 20px;
+    --gap-large: 40px;
+    --gap-medium: 20px;
+    --gap-small: 10px;
+    --spacing-section-extra-page: 120px 60px;
+    --text-section-form: 1.5rem;
+  }
+
+  section {
+    scroll-margin-top: 65px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-header);
+    height: auto;
+    min-height: 80px;
+  }
+
+  .logo {
+    flex: 0 1 auto; /* ← Logo a la izquierda, sin expandirse */
+  }
+
+  .menu-toggle {
+    display: none !important; /* ← Ocultar hamburguesa */
+  }
+
+  .nav-links {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    transform: none !important;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .nav-items {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav-items a {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 0;
+    color: var(--semiBlack);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+    opacity: 1 !important;
+    transform: none !important;
+    width: auto;
+  }
+
+  /* .nav-items a:hover {
+    color: #a67c52;
+    border-bottom-color: #a67c52;
+  } */
+}
